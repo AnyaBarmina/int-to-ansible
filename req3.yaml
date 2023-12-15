@@ -1,5 +1,5 @@
 ---
-- name: Configure REQ2 ACL
+- name: Configure REQ3 ACL
   hosts: R1
   gather_facts: false
   connection: network_cli
@@ -13,11 +13,11 @@
          - deny tcp any any eq www
          - permit ip any any
          
-   - name: Apply new ACL to R1 Eth0/0.10 in
+   - name: Apply new ACL to R1 Eth0/0.10 out
      ios_config:
        parents: int Eth0/0.10
        lines:
-         - ip access-group REQ2 in
+         - ip access-group REQ2 out
          
    - name: Check result
      ios_command:
