@@ -11,11 +11,13 @@
        lines:
          - 10 deny tcp any any eq telnet
          - 20 permit ip any any
+         
    - name: Apply new ACL to R2 Eth0/1 out
      ios_config:
        parents: ip access-group REQ1 out
        lines:
          - access-class REQ1 in 
+         
    - name: Check result
      ios_command:
        commands: sh run | begin line vty 0 4
