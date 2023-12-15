@@ -13,11 +13,11 @@
          - deny tcp any any eq www
          - permit ip any any
          
-   - name: Apply new ACL to R1 Eth0/0.1 out
+   - name: Apply new ACL to R1 Eth0/0.1 in
      ios_config:
        parents: int Eth0/0.1
        lines:
-         - ip access-group REQ2 out
+         - ip access-group REQ2 in
          
    - name: Check result
      ios_command:
