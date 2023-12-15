@@ -14,9 +14,9 @@
          - deny icmp any any echo
          - permit any ip any
          
-   - name: Apply new ACL to R1 Eth0/0 out
+   - name: Apply new ACL to R1 Eth0/0.10 out
      ios_config:
-       parents: int Eth0/0
+       parents: int Eth0/0.10
        lines:
          - ip access-group REQ2 out
          
