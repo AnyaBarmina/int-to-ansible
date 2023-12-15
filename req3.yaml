@@ -17,11 +17,11 @@
      ios_config:
        parents: int Eth0/0.10
        lines:
-         - ip access-group REQ2 out
+         - ip access-group REQ3 out
          
    - name: Check result
      ios_command:
-       commands: sh ip access-lists REQ2
+       commands: sh ip access-lists REQ3
      register: result
      tags: show
 
