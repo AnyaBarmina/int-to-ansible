@@ -7,8 +7,22 @@
   tasks:
    - name: Load new ACL into device
      ios_config:
-       command: ip access-list extended REQ1
+       parents:  ip access-list extended REQ1
        lines:
          - 10 deny tcp any any eq telnet
          - 20 permit ip any any
-         - deny any
+   - name: Apply new ACL to R2 Eth0/1 out
+     ios_config:
+       parents: ip access-group REQ1 out
+       lines:
+         - access-class REQ1 in 
+   - name: Check result
+     ios_command:
+       commands: sh run | begin line vty 0 4
+     register: result
+     tags: show
+
+   - name: Print result
+     debug:
+       var: result.stdout_lines
+     tags: show
